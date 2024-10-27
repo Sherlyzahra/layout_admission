@@ -9,78 +9,204 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: Scaffold(
+        body: WebLayout(),
+      ),
     );
   }
 }
 
-class LoginScreen extends StatelessWidget {
+class WebLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[200],
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
+    return Row(
+      children: [
+        // Sidebar
+        Flexible(
+          flex: 2,
+          child: Container(
+            color: Color(0xFFF0C987),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    'Undiknas Admission',
+                    style: TextStyle(color: Color(0xFF37474F), fontSize: 24),
+                  ),
+                ),
+                SidebarItem(title: "Dashboard"),
+                SidebarItem(title: "QR Code"),
+                SidebarItem(title: "Bill"),
+                SidebarItem(title: "E-polling"),
+                SidebarItem(title: "Event Attendance"),
+                SidebarItem(title: "Announcement"),
+                SidebarItem(title: "Curriculum"),
+                SidebarItem(title: "Profile"),
+                SidebarItem(title: "KTM Registration"),
+                SidebarItem(title: "Academic Guidance"),
+                SidebarItem(title: "Study Plan Form"),
+                SidebarItem(title: "Course Schedule"),
+              ],
+            ),
+          ),
+        ),
+        
+        // Main Content Area
+        Expanded(
+          flex: 8,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Logo
-              Image.asset('https://undiknas.ac.id/wp-content/uploads/2023/04/UNDIKNAS-COLOR-1024x1024.jpg', height: 150), // Ganti dengan logo sesuai path
-              SizedBox(height: 20),
-              
-              // Email TextField
-              TextField(
-                decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.email, color: Colors.orange),
-                  labelText: 'Email',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+              // Header
+              Container(
+                padding: EdgeInsets.all(16),
+                color: Color(0xFF2A3B4D),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Student Dashboard',
+                      style: TextStyle(color: Color(0xFFECEFF1), fontSize: 24),
+                    ),
+                    Row(
+                      children: [
+                        Icon(Icons.person, color: Colors.white),
+                        SizedBox(width: 10),
+                        Icon(Icons.notifications, color: Colors.white),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(height: 20),
+              
+              // Main Content
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.all(16),
+                  color: Color(0xFFF9F9F9),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      // Student Identity Card Section
+                      Card(
+                        margin: EdgeInsets.only(bottom: 16),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Student Identity Card',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Color(0xFF455A64),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(height: 16),
+                              Row(
+                                children: [
+                                  Image.asset(
+                                    'assets/img Kartu.png', // Replace with your image path
+                                    width: 150,
+                                    height: 100,
+                                  ),
+                                  SizedBox(width: 20),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      ElevatedButton(
+                                        onPressed: () {},
+                                        child: Text("Download"),
+                                      ),
+                                      SizedBox(height: 8),
+                                      ElevatedButton(
+                                        onPressed: () {},
+                                        child: Text("KTM Print Registration"),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
 
-              // Password TextField
-              TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.vpn_key, color: Colors.orange),
-                  labelText: 'Password',
-                  suffixIcon: Icon(Icons.visibility_off),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-              ),
-              SizedBox(height: 20),
-
-              // Login Button
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.blue[900], // Ganti warna sesuai gambar
-                  minimumSize: Size(double.infinity, 50), // Full width button
-                ),
-                child: Text('Login'),
-              ),
-              
-              SizedBox(height: 20),
-              
-              // New Student Link
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  'Mahasiswa Baru? Klik disini',
-                  style: TextStyle(
-                    color: Colors.black54,
-                    decoration: TextDecoration.underline,
+                      Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Academic Supervisor (PA)',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Color(0xFF455A64),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(height: 16),
+                              Row(
+                                children: [
+                                  CircleAvatar(
+                                    radius: 40,
+                                    backgroundImage: AssetImage('assets/supervisor.png'),
+                                  ),
+                                  SizedBox(width: 20),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Ir. Gede Humaswara Prathama S.T., M.T. ASEAN Eng.',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Color(0xFF455A64),
+                                        ),
+                                      ),
+                                      SizedBox(height: 8),
+                                      Text(
+                                        'adiewahyudi@undiknas.ac.id',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          color: Color(0xFF757575),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
             ],
           ),
         ),
+      ],
+    );
+  }
+}
+
+// Sidebar Item Widget
+class SidebarItem extends StatelessWidget {
+  final String title;
+
+  SidebarItem({required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(
+        title,
+        style: TextStyle(color: Color(0xFF37474F)),
       ),
     );
   }
