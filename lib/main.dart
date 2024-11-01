@@ -5,6 +5,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,6 +19,8 @@ class MyApp extends StatelessWidget {
 }
 
 class WebLayout extends StatelessWidget {
+  const WebLayout({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -25,13 +29,13 @@ class WebLayout extends StatelessWidget {
         Flexible(
           flex: 2,
           child: Container(
-            color: Color(0xFFF0C987),
+            color: const Color(0xFFF0C987),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
+                const SizedBox(height: 20),
+                const Padding(
+                  padding: EdgeInsets.all(16.0),
                   child: Text(
                     'Undiknas Admission',
                     style: TextStyle(color: Color(0xFF37474F), fontSize: 24),
@@ -61,9 +65,9 @@ class WebLayout extends StatelessWidget {
             children: [
               // Header
               Container(
-                padding: EdgeInsets.all(16),
-                color: Color(0xFF2A3B4D),
-                child: Row(
+                padding: const EdgeInsets.all(16),
+                color: const Color(0xFF2A3B4D),
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
@@ -84,20 +88,20 @@ class WebLayout extends StatelessWidget {
               // Main Content
               Expanded(
                 child: Container(
-                  padding: EdgeInsets.all(16),
-                  color: Color(0xFFF9F9F9),
+                  padding: const EdgeInsets.all(16),
+                  color: const Color(0xFFF9F9F9),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       // Student Identity Card Section
                       Card(
-                        margin: EdgeInsets.only(bottom: 16),
+                        margin: const EdgeInsets.only(bottom: 16),
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              const Text(
                                 'Student Identity Card',
                                 style: TextStyle(
                                   fontSize: 18,
@@ -105,26 +109,26 @@ class WebLayout extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              SizedBox(height: 16),
+                              const SizedBox(height: 16),
                               Row(
                                 children: [
                                   Image.asset(
-                                    'assets/img Kartu.png', // Replace with your image path
+                                    'assets/img/kucing.jpg', // Replace with your image path
                                     width: 150,
                                     height: 100,
                                   ),
-                                  SizedBox(width: 20),
+                                  const SizedBox(width: 20),
                                   Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       ElevatedButton(
                                         onPressed: () {},
-                                        child: Text("Download"),
+                                        child: const Text("Download"),
                                       ),
-                                      SizedBox(height: 8),
+                                      const SizedBox(height: 8),
                                       ElevatedButton(
                                         onPressed: () {},
-                                        child: Text("KTM Print Registration"),
+                                        child: const Text("KTM Print Registration"),
                                       ),
                                     ],
                                   ),
@@ -135,9 +139,9 @@ class WebLayout extends StatelessWidget {
                         ),
                       ),
 
-                      Card(
+                      const Card(
                         child: Padding(
-                          padding: const EdgeInsets.all(16.0),
+                          padding: EdgeInsets.all(16.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -154,7 +158,7 @@ class WebLayout extends StatelessWidget {
                                 children: [
                                   CircleAvatar(
                                     radius: 40,
-                                    backgroundImage: AssetImage('assets/supervisor.png'),
+                                    backgroundImage: AssetImage('assets/img/yakult.jpeg'),
                                   ),
                                   SizedBox(width: 20),
                                   Column(
@@ -169,7 +173,7 @@ class WebLayout extends StatelessWidget {
                                       ),
                                       SizedBox(height: 8),
                                       Text(
-                                        'adiewahyudi@undiknas.ac.id',
+                                        'huma@undiknas.ac.id',
                                         style: TextStyle(
                                           fontSize: 14,
                                           color: Color(0xFF757575),
@@ -199,14 +203,14 @@ class WebLayout extends StatelessWidget {
 class SidebarItem extends StatelessWidget {
   final String title;
 
-  SidebarItem({required this.title});
+  const SidebarItem({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(
         title,
-        style: TextStyle(color: Color(0xFF37474F)),
+        style: const TextStyle(color: Color(0xFF37474F)),
       ),
     );
   }
